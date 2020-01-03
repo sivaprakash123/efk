@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  filebeat:
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    image: sivaprakash123/filebeat:23
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      #- /var/log/syslog:/var/log/syslog:ro
+        #- ./html:/usr/share/nginx/html
+    networks:
+      - frontend
+
+networks:
+  frontend:
+    driver: overlay
+    external: true
