@@ -7,7 +7,7 @@ input {
 output {
   elasticsearch {
     hosts => ["http://172.17.25.236:9200"]
-    index => "%{[@metadata][beat]}-%{[@metadata][version]}"
+    index => "filebeat-7.5.1"
   }
 }
 

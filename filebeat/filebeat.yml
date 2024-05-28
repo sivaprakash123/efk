@@ -6,12 +6,15 @@ services:
       replicas: 1
       restart_policy:
         condition: on-failure
-    image: sivaprakash123/filebeat:23
+    image: sivaprakash123/filebeat:25
     volumes:
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
       #- /var/log/syslog:/var/log/syslog:ro
         #- ./html:/usr/share/nginx/html
+    environment: 
+      ELASTICSEARCH_HOSTS: "172.17.25.236"
+
     networks:
       - frontend
 
